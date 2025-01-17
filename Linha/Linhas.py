@@ -57,7 +57,9 @@ def draw_line_pygame(screen, pixels, color=(255, 255, 255)):
     for px, py in pixels:
         pygame.draw.rect(screen, color, (px * 10, py * 10, 10, 10))  
 
-if __name__ == "__main__":
+
+def main():
+    
     # Configurações iniciais do Pygame
     pygame.init()
     width, height = 800, 600
@@ -93,3 +95,7 @@ if __name__ == "__main__":
 
     pygame.quit()
     sys.exit()
+
+
+if __name__ == "__main__":
+    main()
