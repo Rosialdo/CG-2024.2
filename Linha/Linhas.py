@@ -23,13 +23,13 @@ def dda(x1, y1, x2, y2):
         incremento = (y2 - y1) / dx
         y = y1
         for x in range(x1, x2 + 1):
-            pixels.append((x, round(y)))
+            pixels.append(x, y)
             y += incremento
     else:
         incremento = (x2 - x1) / dy
         x = x1
         for y in range(y1, y2 + 1):
-            pixels.append((round(x), y))
+            pixels.append(x, y)
             x += incremento
 
     return pixels
@@ -59,7 +59,7 @@ def draw_line_pygame(screen, pixels, color=(255, 255, 255)):
 
 
 def main():
-    
+
     # Configurações iniciais do Pygame
     pygame.init()
     width, height = 800, 600
