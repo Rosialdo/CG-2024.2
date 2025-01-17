@@ -30,4 +30,4 @@ Para essa implementação eu coloquei todos os três algoritimos em um único ar
 
 É uma função no codigo chamada ```analitico```, essa função tem 4 entradas ```x1```, ```y1```, ```x2``` e ```y2```. Para a realização do algoritimo eu fiz com referencia ao Slide disponibilizado pelo Professor durante as aulas da disciplina: 
 
-![Algoritimo Analítico](assets/analitico.png)
+![Algoritimo Analítico](../assets/analitico.png)
