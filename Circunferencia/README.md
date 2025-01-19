@@ -1,52 +1,73 @@
-# Trabalho de rasterização de Circunferência
+# Trabalho de Rasterização de Circunferências
 
-## Objetivo do programa
+## Objetivo do Programa
 
-### Desenvolver um programa que permita desenhar circunferências por meio dos algoritmos:
+### Desenvolver um programa que permita desenhar circunferências utilizando os algoritmos:
 
-- paramétrico;
-- incremental;
-- Bresenham.
+- Paramétrico
+- Incremental
+- Bresenham
 
-## Tecnologias utilizadas
+## Tecnologias Utilizadas
 
-### Linguagem de programação: 
+### Linguagem de Programação
 
-Escolhi como linguagem para realizar esse trabalho o ```python``` a escolha foi devido a maior familiaridade com a linguem visando uma melhor implementação do código.
+Escolhi a linguagem Python para este projeto devido à minha familiaridade com ela e à sua flexibilidade, o que facilita a implementação e teste dos algoritmos.
 
-### Blibiotecas utilizadas:
+### Bibliotecas Utilizadas
 
-Para esse codigo utilizei duas blibiotecas: 
+As seguintes bibliotecas foram utilizadas no desenvolvimento do programa:
 
-- ```sys```: Dentro do codigo foi utilizada para encerrar o programa corretamente;
+- **`sys`**: Utilizada para encerrar o programa de forma adequada.
+- **`pygame`**: Escolhida para demonstrar graficamente os algoritmos de rasterização. Considerei inicialmente o uso da biblioteca matplotlib, mas optei pelo pygame por facilitar futuras implementações e pela sua abordagem mais intuitiva para manipulação de gráficos em tempo real.
+- **`math`**: Utilizada para cálculos matemáticos necessários nos algoritmos, como funções trigonométricas, otimizando os cálculos relacionados à construção de circunferências.
 
-- ```pygame```: Essa foi usada pra conseguir demonstrar graficamente a implementação. Estava na duvida dentre ela e a mathplot, mas ela foi a escolhida visando facilitar futuras implementações no decorrer da disciplina.
+## Implementação dos Algoritmos
 
-- ```math```: Pra conseguir facilitar os calculos das circunferências usei a blibioteca ```math``` isso possibilitou que não precissase realizar algumas operações completas dentro dos algoritimos 
+Os três algoritmos foram implementados em um único arquivo chamado `circunferencia.py`, facilitando a organização e apresentação do projeto.
 
-## Implementação
+### Algoritmo Paramétrico
 
-Assim como no arquivo das linhas foi implementado os 3 algoritimos dentro de um mesmo aquivo para ficar mais facil de apresentar a ideia do programa, diante disso vamos falar sobre eles a seguir: 
+A função `circulo_parametrico(screen, xc, yc, raio, color)` utiliza a equação paramétrica de uma circunferência para determinar os pontos. Suas entradas principais são:
 
+- `xc` e `yc`: Coordenadas do centro da circunferência.
+- `raio`: O raio da circunferência.
 
-### paramétrico:  
+O algoritmo calcula os pontos da circunferência variando o ângulo de 0 a 360 graus. A cada iteração, utiliza funções trigonométricas para determinar as coordenadas \( x \) e \( y \). Essa abordagem, embora precisa, pode ser relativamente lenta devido ao uso intensivo de operações de ponto flutuante.
 
-Para a realização da primeira função implementada no codigo como ```circulo_parametrico```, essa função tem 3 entradas principais ```xc```, ```yc``` e ```raio```. Para a realização do algoritimo eu fiz com referencia ao Slide disponibilizado pelo Professor durante as aulas da disciplina: 
+![Algoritmo Paramétrico](../assets/parametrico.png)
 
-![Algoritimo paramétrico](../assets/parametrico.png)
+---
 
-### incremental: 
+### Algoritmo Incremental
 
-Para a realização da primeira função implementada no codigo como ```circulo_parametrico```, essa função tem 3 entradas principais ```xc```, ```yc``` e ```raio```. (referenciar essa parte direito.): 
+A função `circulo_incremental(screen, xc, yc, raio, color)` também recebe como entradas `xc`, `yc` e `raio`. Este método utiliza uma abordagem incremental para calcular os pontos da circunferência com base em pequenas variações angulares. O uso de seno e cosseno para calcular as novas coordenadas dos pontos, a cada incremento, facilita a construção da circunferência.
 
-![Algoritimo incremental]( )
+A função `simetria(screen, xc, yc, x, y, color)` é essencial para otimizar o algoritmo incremental, desenhando simultaneamente os pontos simétricos da circunferência em todas as oito regiões principais.
 
-### Bresenham: 
+> *Nota*: A imagem do algoritmo incremental ainda precisa ser referenciada corretamente no local adequado.
 
-Para a realização da primeira função implementada no codigo como ```circulo_bresenham```, essa função tem 3 entradas principais ```xc```, ```yc``` e ```raio```. Para a realização do algoritimo eu fiz com referencia ao Slide disponibilizado pelo Professor durante as aulas da disciplina: 
+---
 
-![Algoritimo paramétrico](../assets/c_bresenham.png)
+### Algoritmo de Bresenham
 
-### Desenvolvimento:
+A função `circulo_bresenham(screen, xc, yc, raio, color)` implementa o algoritmo de Bresenham para rasterização de circunferências. Este método utiliza aritmética de inteiros para calcular os pontos, eliminando a necessidade de operações de ponto flutuante, o que o torna mais rápido e eficiente.
 
-Para esse desenvolvimento dos algoritimos de circunferencia eu enfrentei alguns problemas de implementação, fiz ele inicialmente junto com o de linha, mas não gostei da abordagem e após algum tempo fiz o de linha primeiro e depois fiz esses de circunferencia, passada a confusão inicial da resposta gráfica que enfrentei fazendo os algoritimos em linha a parte que mais me levou tempo foi a função ```simetria``` que como o proprio nome deixa implicito serve para orcanicar a simetria das circunferencias, a função incremental foi algo que me levou um pouco mais de tempo pois precisava encontrar mais referencia para desenvolve-la. Acredito ter conseguido implementar os topicos solicitados na atividade.
+Entradas principais:
+
+- `xc` e `yc`: Coordenadas do centro da circunferência.
+- `raio`: O raio da circunferência.
+
+O algoritmo começa no ponto superior da circunferência e avança calculando os pixels de forma incremental, utilizando a função `simetria` para desenhar os pontos equivalentes em todas as regiões.
+
+![Algoritmo de Bresenham](../assets/c_bresenham.png)
+
+---
+
+## Desenvolvimento
+
+Durante a implementação, enfrentei desafios ao lidar com a visualização gráfica dos algoritmos. Inicialmente, tentei desenvolver os algoritmos de linha e circunferência juntos, mas essa abordagem se mostrou confusa. Resolvi priorizar a implementação das linhas, o que facilitou o desenvolvimento posterior das circunferências.
+
+A função `simetria` foi particularmente desafiadora, pois organiza os pontos simétricos da circunferência em todas as regiões principais, garantindo que a forma seja desenhada corretamente. A implementação do algoritmo incremental foi a mais demorada, devido à necessidade de estudar referências adicionais para compreendê-lo completamente.
+
+No geral, acredito que consegui implementar os tópicos solicitados de forma satisfatória, e o programa final atende aos requisitos propostos na atividade.
