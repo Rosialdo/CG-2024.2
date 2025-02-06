@@ -12,7 +12,7 @@
 
 ### Linguagem de Programação
 
-Para a implementação deste trabalho, optei pela linguagem Python devido à minha familiaridade e à sua flexibilidade para desenvolvimento de aplicações gráficas.
+Para a implementação deste trabalho, optei pela linguagem `Python` devido à minha familiaridade e à sua flexibilidade para desenvolvimento de aplicações gráficas.
 
 ### Bibliotecas Utilizadas
 
@@ -51,7 +51,8 @@ O algoritmo de Bresenham é implementado pela função `bresenham(x1, y1, x2, y2
 
 ## Desenvolvimento
 
-Durante a implementação, encontrei dificuldades significativas ao desenvolver os algoritmos DDA e Bresenham. Após estudar os pseudocódigos fornecidos em aula, consegui superar esses obstáculos. Também enfrentei desafios na visualização das linhas, inicialmente tentando usar a biblioteca matplotlib. Optei então pelo pygame, após considerar sua adequação para demonstrações gráficas em tempo real, conforme discutido com colegas.
+Durante a implementação, encontrei dificuldades significativas ao desenvolver os algoritmos DDA e Bresenham. Após estudar os pseudocódigos fornecidos em aula, consegui superar esses obstáculos. Também enfrentei desafios na visualização das linhas, inicialmente tentando usar a biblioteca `matplotlib`. Optei então pelo `pygame`, após considerar sua adequação para demonstrações gráficas em tempo real, conforme discutido com colegas.
 
 A implementação da visualização das linhas não correspondeu completamente às minhas expectativas iniciais, mas acredito que tenha sido eficaz para exemplificar os cálculos dos algoritmos.
 
+`P1(X1,Y1) e P2(X2,Y2) = P1 (0,0) e P2 (2,5)`

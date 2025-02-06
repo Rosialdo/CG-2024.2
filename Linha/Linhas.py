@@ -1,6 +1,8 @@
 import pygame
 import sys
 
+
+#------------------- Algoritmo Analítico -------------------#
 def analitico(x1, y1, x2, y2):
     pixels = []
     if x1 == x2:
@@ -14,6 +16,7 @@ def analitico(x1, y1, x2, y2):
             pixels.append((x, y))
     return pixels
 
+#------------------- Algoritmo DDA -------------------#
 def dda(x1, y1, x2, y2):
     pixels = []
     dx = abs(x2 - x1)
@@ -23,16 +26,18 @@ def dda(x1, y1, x2, y2):
         incremento = (y2 - y1) / dx
         y = y1
         for x in range(x1, x2 + 1):
-            pixels.append(x, y)
+            pixels.append((x, y))
             y += incremento
     else:
         incremento = (x2 - x1) / dy
         x = x1
         for y in range(y1, y2 + 1):
-            pixels.append(x, y)
+            pixels.append((x, y))
             x += incremento
 
     return pixels
+
+#------------------- Algoritmo bresenham -------------------#
 
 def bresenham(x1, y1, x2, y2):
     pixels = []
@@ -55,7 +60,7 @@ def bresenham(x1, y1, x2, y2):
 
 def draw_line_pygame(screen, pixels, color=(255, 255, 255)):
     for px, py in pixels:
-        pygame.draw.rect(screen, color, (px * 10, py * 10, 10, 10))  
+        pygame.draw.rect(screen, color, (px * 50, py * 50, 50, 50))  
 
 
 def main():
@@ -64,8 +69,8 @@ def main():
     pygame.init()
     width, height = 800, 600
     screen = pygame.display.set_mode((width, height))
-    pygame.display.set_caption("Algoritmos de Rasterização")
-    screen.fill((0, 0, 0))
+    pygame.display.set_caption("Algoritmo Bresenham")
+    screen.fill((255, 255, 255))
 
     x1 = int(input("Digite o valor de x1: "))
     y1 = int(input("Digite o valor de y1: "))
@@ -87,9 +92,9 @@ def main():
 
         # Desenha as linhas no grid
 
-        draw_line_pygame(screen, pixels_analitico, color=(255, 0, 0))   # Vermelho - Analítico
-        # draw_line_pygame(screen, pixels_bresenham, color=(0, 255, 0))  # Verde - Bresenham
-        # draw_line_pygame(screen, pixels_dda, color=(0, 0, 255))        # Azul - DDA
+        #draw_line_pygame(screen, pixels_analitico, color=(255, 0, 0))   # Vermelho - Analítico
+        #draw_line_pygame(screen, pixels_dda, color=(0, 0, 255))        # Azul - DDA
+        draw_line_pygame(screen, pixels_bresenham, color=(0, 255, 0))  # Verde - Bresenham
 
         pygame.display.flip()
 
