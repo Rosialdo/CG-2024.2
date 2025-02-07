@@ -81,7 +81,7 @@ def main():
 
         # Desenho dos círculos usando diferentes algoritmos
 
-        circulo_parametrico(screen, xc, yc, 100, COLORS["parametrica"])
+        circulo_parametrico(screen, xc, yc, 300, COLORS["parametrica"])
         circulo_incremental(screen, xc, yc, 150, COLORS["incremental"])
         circulo_bresenham(screen, xc, yc, 200, COLORS["bresenham"])
 

@@ -1,7 +1,7 @@
 import pygame
 import sys
 
-sys.setrecursionlimit(100000)
+sys.setrecursionlimit(5000)
 # Definições de cores
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -37,8 +37,8 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     screen.fill(BG_COLOR)
-    center = (250, 250)
-    radius = 100
+    center = (100, 100)
+    radius = 50
     draw_circle(screen, center, radius, BLACK)
     
     # Criar botão
