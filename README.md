@@ -1,16 +1,14 @@
 # CG-2024.2
-Repositório para anexar as atividade de Computação Gráfica da UFRR
+Repositório para anexar as atividades de Computação Gráfica da UFRR.
 
-## Para ver a pasta de cada um dos Trabalhos
+## Para ver a pasta de cada um dos trabalhos
 
-- [Trabalho de rasterização de Linhas](https://github.com/Rosialdo/CG-2024.2/tree/main/Linha)
-- [Trabalho de rasterização de Circunferencias](https://github.com/Rosialdo/CG-2024.2/tree/main/Circunferencia)
-- [Trabalho de Preenchimento](https://github.com/Rosialdo/CG-2024.2/tree/main/Preenchimento)
+- [Trabalho de rasterização de linhas](https://github.com/Rosialdo/CG-2024.2/tree/main/Linha)
+- [Trabalho de rasterização de circunferências](https://github.com/Rosialdo/CG-2024.2/tree/main/Circunferencia)
+- [Trabalho de preenchimento](https://github.com/Rosialdo/CG-2024.2/tree/main/Preenchimento)
 
+## Para acessar os relatórios
 
-
-## Para ascessar os relatorios: 
-
-- [Relatorio de rasterização de Linhas](https://github.com/Rosialdo/CG-2024.2/blob/main/assets/Trabalho_de_Rasterizao_de_Linhas_Rosialdo.pdf)
-- [Relatorio de rasterização de Circunferencias](https://github.com/Rosialdo/CG-2024.2/blob/main/assets/Trabalho_de_Rasterizao_de_Circunferncias_Rosialdo.pdf)
-- [Relatorio de Preenchimento](https://github.com/Rosialdo/CG-2024.2/blob/main/assets/Trabalho_de_Preenchimento_Rosialdo.pdf)
+- [Relatório de rasterização de linhas](https://github.com/Rosialdo/CG-2024.2/blob/main/assets/Trabalho_de_Rasterizacao_de_Linhas_Rosialdo.pdf)
+- [Relatório de rasterização de circunferências](https://github.com/Rosialdo/CG-2024.2/blob/main/assets/Trabalho_de_Rasterizacao_de_Circunferencias_Rosialdo.pdf)
+- [Relatório de preenchimento](https://github.com/Rosialdo/CG-2024.2/blob/main/assets/Trabalho_de_Preenchimento_Rosialdo.pdf)
