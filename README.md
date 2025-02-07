@@ -1,5 +1,5 @@
 # CG-2024.2
-Repositório para anexar as atividades de Computação Gráfica da UFRR.
+Repositório para anexar as atividades de Computação Gráfica da UFRR. 2024.2
 
 ## Para ver a pasta de cada um dos trabalhos
 
@@ -12,3 +12,4 @@ Repositório para anexar as atividades de Computação Gráfica da UFRR.
 - [Relatório de rasterização de linhas](https://github.com/Rosialdo/CG-2024.2/blob/main/assets/Trabalho_de_Rasterizacao_de_Linhas_Rosialdo.pdf)
 - [Relatório de rasterização de circunferências](https://github.com/Rosialdo/CG-2024.2/blob/main/assets/Trabalho_de_Rasterizacao_de_Circunferencias_Rosialdo.pdf)
 - [Relatório de preenchimento](https://github.com/Rosialdo/CG-2024.2/blob/main/assets/Trabalho_de_Preenchimento_Rosialdo.pdf)
+
