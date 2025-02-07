@@ -22,22 +22,36 @@ def dda(x1, y1, x2, y2):
     dx = x2 - x1
     dy = y2 - y1
 
-    steps = max(dx , dy)  # Determina o maior deslocamento
-    x_increment = dx / steps
-    y_increment = dy / steps
+    if abs(dx) > abs(dy):  
+        passo = abs(dx) # quantidade de passos
+        inc_y = dy / abs(dx)
+        inc_x = 1 if dx > 0 else -1 #direção
 
-    x, y = x1, y1
-    for _ in range(steps + 1):
-        pixels.append((round(x), round(y)))  # Arredonda para garantir o correto preenchimento dos pixels
-        x += x_increment
-        y += y_increment
+        x = x1
+        y = y1
+
+        for _ in range(passo + 1):
+            pixels.append((x, round(y)))  
+            x += inc_x
+            y += inc_y
+    else:  
+        passo = abs(dy)
+        inc_x = dx / abs(dy)
+        inc_y = 1 if dy > 0 else -1
+
+        x = x1
+        y = y1
+
+        for _ in range(passo + 1):
+            pixels.append((round(x), y))  
+            x += inc_x
+            y += inc_y
 
     return pixels
 
+
     
-
 #------------------- Algoritmo bresenham -------------------#
-
 
 def bresenham(x1, y1, x2, y2):
     pixels = []
@@ -50,6 +64,9 @@ def bresenham(x1, y1, x2, y2):
     if y2 < y1:
         y1 = -y1
         y2 = -y2
+        a = -1
+    else: 
+        a = 1
 
     # Se |y2 - y1| > |x2 - x1|, trocar x com y (espelhamento)
     if abs(y2 - y1) > abs(x2 - x1):
@@ -119,8 +136,8 @@ def main():
         # Desenha as linhas no grid
 
         #draw_line_pygame(screen, pixels_analitico, color=(255, 0, 0))   # Vermelho - Analítico
-        draw_line_pygame(screen, pixels_dda, color=(0, 0, 255))        # Azul - DDA
-        #draw_line_pygame(screen, pixels_bresenham, color=(0, 255, 0))  # Verde - Bresenham
+        #draw_line_pygame(screen, pixels_dda, color=(0, 0, 255))        # Azul - DDA
+        draw_line_pygame(screen, pixels_bresenham, color=(0, 255, 0))  # Verde - Bresenham
 
         pygame.display.flip()
 
