@@ -136,8 +136,8 @@ def main():
         # Desenha as linhas no grid
 
         #draw_line_pygame(screen, pixels_analitico, color=(255, 0, 0))   # Vermelho - Analítico
-        #draw_line_pygame(screen, pixels_dda, color=(0, 0, 255))        # Azul - DDA
-        draw_line_pygame(screen, pixels_bresenham, color=(0, 255, 0))  # Verde - Bresenham
+        draw_line_pygame(screen, pixels_dda, color=(0, 0, 255))        # Azul - DDA
+        #draw_line_pygame(screen, pixels_bresenham, color=(0, 255, 0))  # Verde - Bresenham
 
         pygame.display.flip()
 
