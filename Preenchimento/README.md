@@ -32,7 +32,7 @@ O algoritmo pode ser implementado de forma **recursiva**, onde cada pixel válid
 
 ### Referência para o Algoritmo Floodfill:
 
-![image.png](image.png)
+![floodfill](../assets/floodfill.png)
 
 ## Desenvolvimento
 
@@ -54,11 +54,11 @@ Todos os testes foram feitos com os seguintes valores:
 
 ### Teste Circunferência
 
-![p_circulo.png](p_circulo.png)
+![teste circunferencia](../assets/p_circulo.png)
 
 ### Teste Retangulo
 
-![p_retangulo.png](p_retangulo.png)
+![teste retangulo](../assets/p_retangulo.png)
 
 ## Explicação do Algoritmo
 
