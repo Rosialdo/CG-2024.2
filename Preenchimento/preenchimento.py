@@ -76,8 +76,8 @@ def main():
 
     # Desenha o círculo no centro da tela
 
-    draw_circle(screen, xc, yc, 50, BLACK)
-    #draw_rectangle(screen, xc - 50, yc - 30, 100, 60, BLACK)
+    #draw_circle(screen, xc, yc, 50, BLACK)
+    draw_rectangle(screen, xc - 50, yc - 30, 100, 60, BLACK)
     
     # Criar botão
     button_rect = pygame.Rect(200, 400, 100, 40)
