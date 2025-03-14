@@ -1,61 +1,87 @@
-import pygame  # Importa a biblioteca Pygame para renderizar a curva na tela
+import pygame
+import numpy as np
 
-def casteljau(t, pontos_controle):
+def subdivision(P0, P1, P2, P3):
     """
-    Calcula um ponto na curva de Bézier usando o algoritmo de De Casteljau.
-    O método realiza interpolação sucessiva entre os pontos de controle.
+    Calcula os pontos intermediários da curva de Bézier usando o método de De Casteljau.
+    Retorna os novos pontos para subdivisão.
     """
+    # Primeira subdivisão
+    P0xD1 = (P0 + P1) / 2
+    P1xD1 = (P1 + P2) / 2
+    P2xD1 = (P2 + P3) / 2
+    
+    # Segunda subdivisão
+    P0xD2 = (P0xD1 + P1xD1) / 2
+    P1xD2 = (P1xD1 + P2xD1) / 2
+    
+    # Terceira subdivisão (ponto na curva)
+    P0xD3 = (P0xD2 + P1xD2) / 2
+    
+    return P0xD1, P1xD1, P2xD1, P0xD2, P1xD2, P0xD3
 
-    pontos = pontos_controle[:]  # Copia a lista de pontos de controle para não modificar a original
-    n = 3  # Define o grau da curva (cúbica, pois há 4 pontos de controle)
-
-    # Algoritmo de De Casteljau: interpolação sucessiva
-    for r in range(1, n + 1):  # Percorre os níveis da interpolação
-        for i in range(n - r + 1):  # Itera sobre os pontos intermediários restantes
-            x = (1 - t) * pontos[i][0] + t * pontos[i + 1][0]  # Interpolação linear no eixo X
-            y = (1 - t) * pontos[i][1] + t * pontos[i + 1][1]  # Interpolação linear no eixo Y
-            pontos[i] = [x, y]  # Atualiza o ponto na lista com o novo ponto interpolado
-
-    return [int(pontos[0][0]), int(pontos[0][1])]  # Retorna o ponto final da interpolação, convertido para inteiros
+def casteljau(P0, P1, P2, P3, t, curve_points):
+    """
+    Algoritmo de De Casteljau recursivo para calcular pontos da curva de Bézier.
+    """
+    if t > 0.005:
+        e = t / 2
+        P0xD1, P1xD1, P2xD1, P0xD2, P1xD2, P0xD3 = subdivision(P0, P1, P2, P3)
+        casteljau(P0, P0xD1, P0xD2, P0xD3, e, curve_points)
+        casteljau(P0xD3, P1xD2, P2xD1, P3, e, curve_points)
+    else:
+        curve_points.append(P0)
 
 def draw_curve(screen, points, color):
     """
-    Desenha a curva de Bézier utilizando o algoritmo de De Casteljau.
-    
-    Parâmetros:
-        screen (pygame.Surface): Tela onde a curva será desenhada.
-        points (list): Lista de pontos de controle [(x1, y1), (x2, y2), ...].
-        color (tuple): Cor da curva no formato (R, G, B).
+    Desenha a curva de Bézier interpolada.
     """
+    if len(points) > 1:
+        pygame.draw.lines(screen, color, False, points, 2)
 
-    curve_points = [casteljau(t / 100, points) for t in range(101)]  
-    # Calcula 101 pontos da curva variando t de 0 a 1 em passos de 0.01
-
-    pygame.draw.lines(screen, color, False, curve_points, 2)  
-    # Desenha a curva ligando os pontos gerados
+def draw_points(screen, points, color, radius=6):
+    """
+    Desenha os pontos de controle P0, P1, P2 e P3.
+    """
+    for point in points:
+        pygame.draw.circle(screen, color, (int(point[0]), int(point[1])), radius)
 
 def main():
     pygame.init()
-    screen = pygame.display.set_mode((600, 400))
+    width, height = 600, 400
+    screen = pygame.display.set_mode((width, height))
+    pygame.display.set_caption("Casteljau")
     clock = pygame.time.Clock()
-    running = True
-    points = [(100, 300), (150, 200), (400, 200), (500, 300)]  # 3 pontos de controle
     
+    P0 = np.array([100, 300])
+    P1 = np.array([200, 100])
+    P2 = np.array([400, 100])
+    P3 = np.array([500, 300])
+    
+    bezier_curve = []
+    casteljau(P0, P1, P2, P3, 1, bezier_curve)
+    bezier_curve.append(P3)
+    
+    running = True
     while running:
         screen.fill((255, 255, 255))
+        
+        # Desenha o polígono de controle
+        pygame.draw.lines(screen, (200, 0, 0), False, [P0, P1, P2, P3], 2)
+        
+        # Desenha os pontos de controle
+        draw_points(screen, [P0, P1, P2, P3], (255, 255, 0))
+        
+        # Desenha a curva de Bézier
+        draw_curve(screen, bezier_curve, (0, 0, 255))
+        
+        pygame.display.flip()
+        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
         
-        # Desenha os pontos de controle
-        for p in points:
-            pygame.draw.circle(screen, (0, 0, 255), p, 5)
-        
-        # Desenha a curva usando o algoritmo de De Casteljau
-        draw_curve(screen, points, (0, 255, 0)) # Verde (Casteljau)
-        
-        pygame.display.flip()
-        clock.tick(60)
+        clock.tick(30)
     
     pygame.quit()
 
