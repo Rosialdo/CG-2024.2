@@ -6,19 +6,19 @@ def subdivision(P0, P1, P2, P3):
     Calcula os pontos intermediários da curva de Bézier usando o método de De Casteljau.
     Retorna os novos pontos para subdivisão.
     """
-    # Primeira subdivisão
+    # Primeira subdivisão | Cria três novos pontos intermediarios 
     P0xD1 = (P0 + P1) / 2
     P1xD1 = (P1 + P2) / 2
     P2xD1 = (P2 + P3) / 2
     
-    # Segunda subdivisão
+    # Segunda subdivisão | Cria a partir dos pontos intermediarios novos pontos intermediarios 
     P0xD2 = (P0xD1 + P1xD1) / 2
     P1xD2 = (P1xD1 + P2xD1) / 2
     
-    # Terceira subdivisão (ponto na curva)
+    # Terceira subdivisão (ponto na curva) | Realiza a ultima subdivisão com os resultados da anteriores
     P0xD3 = (P0xD2 + P1xD2) / 2
     
-    return P0xD1, P1xD1, P2xD1, P0xD2, P1xD2, P0xD3
+    return P0xD1, P2xD1, P0xD2, P1xD2, P0xD3
 
 def casteljau(P0, P1, P2, P3, t, curve_points):
     """
@@ -26,7 +26,7 @@ def casteljau(P0, P1, P2, P3, t, curve_points):
     """
     if t > 0.005:
         e = t / 2
-        P0xD1, P1xD1, P2xD1, P0xD2, P1xD2, P0xD3 = subdivision(P0, P1, P2, P3)
+        P0xD1, P2xD1, P0xD2, P1xD2, P0xD3 = subdivision(P0, P1, P2, P3)
         casteljau(P0, P0xD1, P0xD2, P0xD3, e, curve_points)
         casteljau(P0xD3, P1xD2, P2xD1, P3, e, curve_points)
     else:

@@ -36,7 +36,7 @@ Abaixo, um trecho do código:
 
 ### Algoritmo Casteljau:
 
-O algoritmo de De Casteljau calcula pontos na curva por meio de **interpolação linear** sucessiva entre os pontos de controle. Em cada nível de interpolação, os pontos são recalculados até restar apenas um, que representa um ponto na curva.
+O código implementa o algoritmo de De Casteljau para gerar uma curva de Bézier  por meio de subdivisão recursiva. A função subdivision calcula pontos intermediários entre os pontos de controle, refinando a curva progressivamente. A função casteljau aplica recursão para dividir a curva até atingir um critério de parada, armazenando os pontos na lista bezier_curve. 
 
 Abaixo, um trecho do código:
 
@@ -67,7 +67,10 @@ Resultado:
 O teste foi realizado utilizando os seguintes pontos:
 
 ```
-points = [(100, 300), (150, 200), (400, 200), (500, 300)]
+P0 = (100, 300)
+P1 = (200, 100)
+P2 = (400, 100)
+P3 = (500, 300)
 ```
 
 Resultado:
@@ -76,11 +79,11 @@ Resultado:
 
 ## Comparando os Algoritmos
 
-## Comparação dos Algoritmos
-
-| **Critério** | **Algoritmo de De Casteljau** | **Equação de Bézier** |
+| **Critério** | **Algoritmo de De Casteljau** | **Equação de Bézier (Polinômios de Bernstein)** |
 | --- | --- | --- |
-| **Método** | Interpolação sucessiva | Polinômios de Bernstein |
-| **Precisão Numérica** | Mais estável para altos valores de `n` | Pode ter erros numéricos para altos `n` |
-| **Uso em Computação Gráfica** | Melhor para subdivisão adaptativa | Melhor para cálculos diretos |
-| **Facilidade de Implementação** | Simples e intuitivo | Mais complexo devido ao cálculo de coeficientes |
+| **Método** | Baseado em subdivisão recursiva dos segmentos | Utiliza polinômios de Bernstein para calcular a curva diretamente |
+| **Precisão Numérica** | Mais estável para valores altos de `n`, pois evita operações de potência sucessivas | Pode sofrer com erros numéricos devido à manipulação de fatoriais e potências elevadas |
+| **Uso em Computação Gráfica** | Melhor para técnicas de subdivisão adaptativa, permitindo renderizações dinâmicas | Melhor para cálculos diretos, como animações baseadas em interpolação paramétrica |
+| **Facilidade de Implementação** | Conceitualmente simples e intuitivo, baseado na interpolação sucessiva de pontos | Requer o cálculo explícito dos coeficientes binomiais, o que pode ser mais trabalhoso |
+| **Flexibilidade** | Pode ser facilmente adaptado para algoritmos de refinamento progressivo | Melhor para cálculos precisos de posições intermediárias ao longo da curva |
+| **Acurácia em Interpolação** | Garante que todos os pontos intermediários pertencem à curva original | Depende da precisão dos coeficientes binomiais e pode introduzir pequenos desvios |
