@@ -54,8 +54,8 @@ def main():
     clock = pygame.time.Clock()
     
     P0 = np.array([100, 300])
-    P1 = np.array([200, 100])
-    P2 = np.array([400, 100])
+    P1 = np.array([150, 200])
+    P2 = np.array([450, 200])
     P3 = np.array([500, 300])
     
     bezier_curve = []
